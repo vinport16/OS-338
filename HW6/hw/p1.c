@@ -19,7 +19,7 @@ double shubert(double x1, double x2) {
 
 int main (){
 	int x1;
-	int x2, y, min = 9999;
+	double x2, y, min = 9999;
 
 	#pragma omp parallel for 
 	for(x1 = -4; x1 <= 4; x1++){
