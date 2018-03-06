@@ -1,0 +1,23 @@
+Vincent Portelli VLP25
+
+1)
+	a) 1,2,3
+	b) 1,2,(4?),5
+	b) when the program splits into two processes, the CPU schedules them based on some opaque algorithm that could run either process first
+
+2)
+process 1 = 86559; parent = 85666
+process 2 = 86560; parent = 86559
+process 3 = 86561; parent = 86559
+child 86560 exited
+child 86561 exited
+
+3)
+process 1 = 3054; parent = 2801
+process 2 = 3055; parent = 3054
+process 3 = 3056; parent = 3055
+
+4)
+process 3 = 3109; parent = 3108
+process 2 = 3108; parent = 3107
+process 1 = 3107; parent = 2801

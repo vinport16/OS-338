@@ -1,0 +1,114 @@
+Vincent Portelli VLP25
+
+1)
+	a)
+real	0m0.052s
+user	0m0.024s
+sys	0m0.000s
+
+The user spent most of the time doing the operations involved in the for loops
+
+	b)
+real	0m0.436s
+user	0m0.012s
+sys	0m0.028s
+
+the print command adds to the system time
+
+	c)
+real	0m20.252s
+user	0m0.004s
+sys	0m0.032s
+
+the sleep adds to real time but not significantly to user or system time
+
+2)
+	a)
+top - 21:11:03 up 14 days,  8:25,  6 users,  load average: 14.04, 14.03, 13.91
+Tasks: 192 total,  15 running, 177 sleeping,   0 stopped,   0 zombie
+%Cpu(s): 99.7 us,  0.3 sy,  0.0 ni,  0.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:   2048336 total,  1961940 used,    86396 free,    20864 buffers
+KiB Swap:  2097148 total,    59044 used,  2038104 free.  1668804 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND    
+10748 vlp25     20   0   20120   2632   2132 R   0.3  0.1   0:00.04 top        
+10524 vlp25     20   0  105580   6636   4000 S   0.0  0.3   0:00.37 sshd       
+10525 vlp25     20   0   36036   3708   3396 S   0.0  0.2   0:00.34 centrifyda 
+10527 vlp25     20   0   19076   6260   2924 S   0.0  0.3   0:00.21 bash       
+10744 vlp25     20   0    4212    624    544 S   0.0  0.0   0:00.00 pntr      
+
+
+10744:   ./pntr
+0000000000400000      4K r-x-- pntr
+0000000000600000      4K r---- pntr
+0000000000601000      4K rw--- pntr
+00007fc6f42ab000   1784K r-x-- libc-2.19.so
+00007fc6f4469000   2048K ----- libc-2.19.so
+00007fc6f4669000     16K r---- libc-2.19.so
+00007fc6f466d000      8K rw--- libc-2.19.so
+00007fc6f466f000     20K rw---   [ anon ]
+00007fc6f4674000    140K r-x-- ld-2.19.so
+00007fc6f487c000     12K rw---   [ anon ]
+00007fc6f4894000      8K rw---   [ anon ]
+00007fc6f4896000      4K r---- ld-2.19.so
+00007fc6f4897000      4K rw--- ld-2.19.so
+00007fc6f4898000      4K rw---   [ anon ]  
+00007fffd5a5e000    132K rw---   [ stack ]  <---- variables
+00007fffd5ad5000     12K r----   [ anon ]  <-----
+00007fffd5ad8000      8K r-x--   [ anon ]
+ffffffffff600000      4K r-x--   [ anon ]
+ total             4216K
+
+output of pntr:
+0x7ffe081268d8, 0x7ffe081268dc
+
+top says memory is 4212, pmap says memory is 4216
+
+	b)
+the right column is the mapping. The program has read and write permissions for the variable, while the constant is read only. This is consistent with the constant/variable nature of the data.
+
+	c)
+r-- appears:         constants are read only
+rw- appears:				 variables are read and write
+r-x appears: 				 the program code is readable and executable
+rwx does not appear: there are no writeable and execuatable things in the program
+--x does not appear: you can't execute code if you can't read it (?)
+
+	d)
+
+memory location: 00007f7c01248000
+8K = 2000(hex)
+00007f7c01248000 + 2000 = 00007f7c0125a000
+
+00007f7c0125a000 - 1 = 00007f7c01259fff
+00007f7c01249fff - 4 = 00007f7c01249ffb
+
+3)
+	a)
+bluetooth             516096  10 bnep,rfcomm
+
+[    5.981905] Bluetooth: SCO socket layer initialized
+	
+filename:       /lib/modules/4.4.0-109-generic/kernel/net/bluetooth/bluetooth.ko
+alias:          net-pf-31
+license:        GPL
+version:        2.21
+description:    Bluetooth Core ver 2.21
+author:         Marcel Holtmann <marcel@holtmann.org>
+srcversion:     56FBDD51685F905BD0FE769
+depends:        
+intree:         Y
+vermagic:       4.4.0-109-generic SMP mod_unload modversions 
+parm:           disable_esco:Disable eSCO connection creation (bool)
+parm:           disable_ertm:Disable enhanced retransmission mode (bool)
+
+CONCLUSION: bluetooth is a GPL technology for connecting to devices (transmission mode, connection creation)
+
+	b)
+https://aur.archlinux.org/packages/bt-dw1560-firmware/
+
+it's software for wirelessly connecting devices
+
+
+
+

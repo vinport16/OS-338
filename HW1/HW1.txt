@@ -1,0 +1,108 @@
+Vincent Portelli
+
+1
+
+Processes: 402 total, 5 running, 397 sleeping, 1788 threads                                 12:59:38
+Load Avg: 1.69, 1.79, 1.76  CPU usage: 64.21% user, 5.68% sys, 30.9% idle
+SharedLibs: 213M resident, 51M data, 57M linkedit.
+MemRegions: 95693 total, 2251M resident, 85M private, 1163M shared.
+PhysMem: 8072M used (2059M wired), 119M unused.
+VM: 1854G vsize, 1098M framework vsize, 3168035(0) swapins, 3514107(0) swapouts.
+Networks: packets: 2158798/1525M in, 1271490/166M out. Disks: 3099049/56G read, 1627167/33G written.
+
+PID    COMMAND      %CPU  TIME     #TH   #WQ  #PORT MEM    PURG   CMPRS  PGRP  PPID  STATE
+17800  while        97.8  00:07.83 1/1   0    10    328K   0B     0B     17800 17455 running
+17801  for          97.5  00:06.27 1/1   0    10    312K   0B     0B     17801 17599 running
+7234   Terminal     51.1  03:45.58 9/1   5    538   96M+   40M-   59M-   7234  1     running
+200    WindowServer 11.7  74:29.29 10    3    1163  89M+   45M-   220M   200   1     sleeping
+0      kernel_task  8.0   99:25.78 158/4 0    2     975M-  0B     0B     0     0     running
+17737  top          4.5   00:20.26 1/1   0    33    4496K  0B     0B     17737 17006 running
+115    hidd         2.5   19:15.56 7     2    345   2260K  0B     1260K  115   1     sleeping
+16972  Google Chrom 2.4   02:08.71 18    1    173-  216M+  0B     17M    14709 14709 sleeping
+16941  bluetoothaud 1.7   00:23.75 3     1    173   2384K  0B     1548K  16941 1     sleeping
+14709  Google Chrom 0.6   13:47.41 40    2    770   85M    844K-  46M    14709 1     sleeping
+10252  Sublime Text 0.3   01:38.89 11    2    292   34M-   169M+  26M    10252 1     sleeping
+72     logd         0.3   01:45.34 4     4    834   11M+   0B     22M-   72    1     sleeping
+139    coreaudiod   0.3   06:08.10 6     2    447   3568K  0B     5120K  139   1     sleeping
+840    postgres     0.2   00:11.66 1     0    8     348K   0B     288K   840   825   sleeping
+732    SystemUIServ 0.2   04:18.47 4     2    410   13M    68K    57M    732   1     sleeping
+785    Backup and S 0.2   10:42.31 45    1    262   35M    0B     279M   785   1     sleeping
+14715  Google Chrom 0.1   07:46.15 13    2    214   49M    50M    44M    14709 14709 sleeping
+
+while: using 97% CPU, running
+for: using 97% CPU, running
+
+input and sleep are using less than 0.1% CPU and are sleeping (there are only five processes running (is says this in the first line of the 'top' output) and they are all displayed at the top of this list)
+
+this is probably because "while" and "for" are actively using calculation resources (incrementation, comparison), while sleep and input are waiting for something to happen, which does not require any calculation.
+
+----------------------------------------------------------------------------------------------------
+
+2
+
+Processes: 398 total, 9 running, 389 sleeping, 1797 threads                                 13:11:17
+Load Avg: 2.19, 1.75, 1.74  CPU usage: 89.54% user, 10.45% sys, 0.0% idle
+SharedLibs: 220M resident, 52M data, 62M linkedit.
+MemRegions: 95439 total, 2258M resident, 85M private, 1166M shared.
+PhysMem: 7983M used (2093M wired), 208M unused.
+VM: 1838G vsize, 1098M framework vsize, 3172444(0) swapins, 3514107(0) swapouts.
+Networks: packets: 2182223/1554M in, 1287763/167M out. Disks: 3105465/56G read, 1638877/33G written.
+
+PID    COMMAND      %CPU  TIME     #TH   #WQ  #PORT MEM    PURG   CMPRS  PGRP  PPID  STATE
+17959  while        72.0  00:09.39 1/1   0    10    304K   0B     0B     17959 17314 running
+17966  while        71.9  00:05.86 1/1   0    10    312K   0B     0B     17966 17455 running
+17961  for          71.7  00:07.73 1/1   0    10    304K   0B     0B     17961 17395 running
+17972  for          71.3  00:04.13 1/1   0    10    304K   0B     0B     17972 17599 running
+7234   Terminal     60.3  04:14.77 9     5    541   105M+  74M-   60M    7234  1     sleeping
+0      kernel_task  24.3  01:41:48 158/4 0    2     971M   0B     0B     0     0     running
+200    WindowServer 14.3  75:17.80 9     2    1171  51M+   15M-   222M+  200   1     sleeping
+17737  top          4.7   00:58.94 1/1   0    42    4392K  0B     776K   17737 17006 running
+16972  Google Chrom 4.1   03:22.48 18/1  1    176   184M+  0B     37M    14709 14709 running
+115    hidd         3.1   19:26.89 7     2    344   2308K  0B     1252K  115   1     sleeping
+16941  bluetoothaud 1.7   00:35.09 3     1    177   2544K  0B     1476K  16941 1     sleeping
+14709  Google Chrom 0.8   14:11.69 49    3    805-  84M-   88K    46M    14709 1     sleeping
+139    coreaudiod   0.3   06:11.65 6     2    447   3572K  0B     5116K  139   1     sleeping
+72     logd         0.3   01:46.45 4     4    828   12M+   0B     21M    72    1     sleeping
+17971  fud          0.2   00:00.05 5     4    53-   2020K+ 0B     0B     17971 1     sleeping
+785    Backup and S 0.2   10:44.99 45    1    262   35M    0B     279M   785   1     sleeping
+14724  Google Chrom 0.2   00:07.03 15    1    147   9896K+ 0B     16M    14709 14709 sleeping
+
+both "while"s and "for"s are running at ~71% CPU. This is a total of 284%. This is possible because my machine has four CPU cores (total of 400%).
+
+----------------------------------------------------------------------------------------------------
+
+3
+
+Processes: 390 total, 3 running, 387 sleeping, 1837 threads                                 13:18:11
+Load Avg: 1.64, 1.64, 1.68  CPU usage: 11.84% user, 12.8% sys, 76.6% idle
+SharedLibs: 221M resident, 52M data, 62M linkedit.
+MemRegions: 95583 total, 2289M resident, 87M private, 1166M shared.
+PhysMem: 7877M used (1954M wired), 313M unused.
+VM: 1807G vsize, 1098M framework vsize, 3173466(0) swapins, 3514107(0) swapouts.
+Networks: packets: 2187233/1559M in, 1291950/168M out. Disks: 3107560/56G read, 1644074/33G written.
+
+PID    COMMAND      %CPU  TIME     #TH   #WQ  #PORT MEM    PURG   CMPRS  PGRP  PPID  STATE
+7234   Terminal     31.9  04:28.08 9/1   5    534+  66M-   2824K+ 57M-   7234  1     running
+0      kernel_task  28.2  01:43:20 159/5 0    2     971M   0B     0B     0     0     running
+200    WindowServer 9.8   75:39.65 10    3    1165  51M-   13M+   221M   200   1     sleeping
+115    hidd         6.0   19:32.10 7     2    344   2316K  0B     1248K  115   1     sleeping
+17737  top          4.6   01:21.17 1/1   0    48+   4396K  0B     772K   17737 17006 running
+732    SystemUIServ 0.9   04:21.62 4     2    410   14M+   28K-   56M    732   1     sleeping
+69     powerd       0.5   01:15.70 3     2    104   1304K  0B     1436K  69    1     sleeping
+118    notifyd      0.4   01:13.13 3     3    389+  1712K  0B     224K   118   1     sleeping
+785    Backup and S 0.3   10:46.58 45    1    262   35M    0B     279M   785   1     sleeping
+14715  Google Chrom 0.3   08:00.42 13    2    218   50M    19M    45M    14709 14709 sleeping
+1      launchd      0.2   07:38.12 3     3    2818+ 11M+   0B     8924K  1     0     sleeping
+86     coreduetd    0.2   00:27.57 3     2    147+  4632K+ 780K   5572K- 86    1     sleeping
+14709  Google Chrom 0.2   14:20.28 43    3    799+  84M+   48K    46M    14709 1     sleeping
+16972  Google Chrom 0.2   03:48.96 16    1    173   190M+  0B     37M    14709 14709 sleeping
+72     logd         0.1   01:47.05 4     4    819+  14M+   0B     20M-   72    1     sleeping
+11253  Slack Helper 0.1   02:49.75 22    1    152   139M   0B     123M   954   954   sleeping
+12293  powerlogd    0.1   00:01.14 3     2    52+   1308K+ 64K    1292K  12293 1     sleeping
+
+(I'm using my mac)
+as I closed the windows, I was asked if I wanted to terminate the process. In order to close the windows, I needed to kill the programs. It can be seen that they are no longer running in the "top" table.
+
+
+
+

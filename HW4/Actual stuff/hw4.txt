@@ -1,0 +1,57 @@
+Vincent Portelli VLP25
+
+1) OUTPUT:
+
+vincent👀>warning: this program uses gets(), which is unsafe.
+ls
+Lecture 12.docx		core_test_no_fork.c	shell			shm_producer.c
+core_test		execvp_demo.c		shm_consumer		shm_program.c
+core_test_fork.c	makefile		shm_consumer.c		simple-shell.c
+core_test_fork4.c	sharing			shm_producer
+vincent👀>./shell
+vincent👀>warning: this program uses gets(), which is unsafe.
+ls ..
+HW1			HW3			stuff.txt
+HW2			Lecture 12 files
+vincent👀>echo haha lol
+haha lol
+vincent👀>exit
+vincent👀>echo i'm still in the shell!
+i'm still in the shell!
+vincent👀>exit
+
+--------------------
+
+to control the output, I made sure to have the parent process `wait(NULL);` so that the child would finish executing before the user would be prompted for another command.
+
+2) OUTPUT:
+
+1
+Total time was 7.947292 seconds. x = 3000000000
+
+2
+Parent total time was 3.196908 seconds. x = 1500000000.
+Child total time was 3.197393 seconds. x = 1500000000.  
+
+3
+Process 2626 total time was 2.701569 seconds. x = 1000000000.
+Process 2624 total time was 2.704046 seconds. x = 1000000000.
+Process 2625 total time was 2.720097 seconds. x = 1000000000.   
+
+4
+Process 2634 total time was 2.396697 seconds. x = 750000000.
+Process 2633 total time was 2.400095 seconds. x = 750000000.
+Process 2635 total time was 2.409288 seconds. x = 750000000.
+Process 2632 total time was 2.410211 seconds. x = 750000000.
+
+--------------------
+
+to control the output, I didn't do anything special really. I had each process run and when it finished, it printed the ∆t. The order that they printed their messages was not important.
+
+3) OUTPUT:
+
+Studying Operating Systems Is Fun!%  
+
+--------------------
+
+to control the output, I had to have the parent `wait(NULL);` so that the child would be able to store its message in the memory before the parent attempted to read it.

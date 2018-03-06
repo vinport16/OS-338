@@ -1,0 +1,49 @@
+Vincent Portelli VLP25
+
+1)
+Incorrect server output:
+listening for client...
+Client was Incorrect.
+
+Incorrect client output:
+How many fingers am I holding up?
+10
+Incorrect. I was holding up 11 fingers.
+
+Correct server output:
+listening for client...
+Client was Correct.
+
+Correct client output:
+How many fingers am I holding up?
+11
+Correct. I was holding up 11 fingers.
+
+Output order was determined by the read/write times of the programs
+---------------------------------------
+2)
+Output:
+child minimum = -97.27 
+parent minimum = -36.13 
+smallest min = -97.274323
+
+The parent and child can report their minimums at in any order, but the smallest minimum will be reported only after both parts have finished executing.
+---------------------------------------
+3)
+Output:
+-27.48 37.99 53.51 -73.98 -36.13 49.96 -11.49 15.89 19.88 -27.48 -7.76 10.73 7.95 -10.99 -5.27 7.29 3.67 -5.07 
+
+10.73 -73.98 -20.89 144.06 14.11 -97.27 4.49 -30.95 -7.76 53.51 3.03 -20.89 -3.10 21.40 2.06 -14.20 -1.43 9.88 
+
+-10.99 49.96 21.40 -97.27 -14.45 65.68 -4.60 20.90 7.95 -36.13 -3.10 14.11 3.18 -14.45 -2.11 9.59 1.47 -6.67 
+
+7.29 15.89 -14.20 -30.95 9.59 20.90 3.05 6.65 -5.27 -11.49 2.06 4.49 -2.11 -4.60 1.40 3.05 -0.97 -2.12 
+
+-5.07 -27.48 9.88 53.51 -6.67 -36.13 -2.12 -11.49 3.67 19.88 -1.43 -7.76 1.47 7.95 -0.97 -5.27 0.68 3.67 
+
+min1 = -36
+min2 = -97
+smallest min = -97
+
+The minimums reported at the end will always be in order because they are reported after both functions have completed.
+I liked #3 more because you don't need to play with the data transfer at such a low level. Writing the threads in different functions makes sense to me.

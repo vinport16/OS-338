@@ -1,0 +1,8 @@
+# include <stdio.h>
+int main(){
+
+
+
+
+
+scp vlp25@eecslab-2.case.edu:hw2/a.out lalalalalout
