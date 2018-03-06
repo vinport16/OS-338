@@ -28,7 +28,7 @@ int main (){
 			#pragma omp critical
 			if(y < min){
 				min = y;
-				printf("new min: %f; found by: %d", min, omp_get_thread_num());
+				printf("new min: %f; found by: %d\n", min, omp_get_thread_num());
 			}
 		}
 	}
