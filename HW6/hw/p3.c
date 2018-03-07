@@ -1,11 +1,15 @@
-#include <unistd.h> // For fork and shared memory
-#include <stdio.h> // For printf
-#include <stdlib.h> // For exit
-#include <fcntl.h> // For shared memory
-#include <sys/shm.h> // For shared memory
-#include <sys/mman.h> // For shared memory
+#include <stdio.h>
+#include <stdlib.h> 
+#include <semaphore.h>
+#include <math.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/shm.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
 #include <sys/wait.h> // For wait
-#include <semaphore.h> // For semaphores
 
 double shubert(double x1, double x2) {
 	double sum1 = 0; 
