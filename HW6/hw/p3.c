@@ -56,7 +56,7 @@ int main (){
 		exit(0);
 	}
 
-	&minmem = 9999;
+	*minmem = 9999;
 
 	pid_t pid;
 	pid = fork();
@@ -68,9 +68,9 @@ int main (){
 			for (x2 = -2; x2 <= 2; x2++){
 				y = shubert(x1/2.0, x2);
 				sem_wait(sem);
-				if(y < &minmem){
-					&minmem = y;
-					printf("Child found new min: %f\n", &minmem);
+				if(y < *minmem){
+					*minmem = y;
+					printf("Child found new min: %f\n", *minmem);
 					fflush(stdout);
 				}
 				sem_post(sem);
@@ -86,9 +86,9 @@ int main (){
 			for (x2 = -2; x2 <= 2; x2++){
 				y = shubert(x1/2.0, x2);
 				sem_wait(sem);
-				if(y < &minmem){
-					min = y;
-					printf("Parent found new min: %f\n", &minmem);
+				if(y < *minmem){
+					*minmem = y;
+					printf("Parent found new min: %f\n", *minmem);
 					fflush(stdout);
 				}
 				sem_post(sem);
@@ -98,7 +98,7 @@ int main (){
 		wait(NULL); // Need to wait because someone needs to clean up
 		
 
-		printf("\nMinimum = %f\n", &minmem);
+		printf("\nMinimum = %f\n", *minmem);
 
 		sem_destroy(sem); // Clean up semaphore
 
