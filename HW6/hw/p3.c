@@ -60,6 +60,7 @@ int main (){
 					fflush(stdout);
 				}
 				sem_post(sem);
+				printf("     -----> %f\n", min);
 			}
 		}
 	}
@@ -78,12 +79,13 @@ int main (){
 					fflush(stdout);
 				}
 				sem_post(sem);
+				printf("     -----> %f\n", min);
 			}
 		}
 
 		wait(NULL); // Need to wait because someone needs to clean up
 		
-		
+
 		printf("\nMinimum = %f\n", min);
 
 		sem_destroy(sem); // Clean up semaphore
