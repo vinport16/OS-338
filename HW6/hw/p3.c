@@ -22,14 +22,17 @@ double shubert(double x1, double x2) {
 	return sum1 * sum2;
 }
 
-double min = 9999;
-
 int main (){
 
 	const int SIZE = 1;
-	const char *name = "Vincent's C00L Memory";
+	const char *name  = "Vincent's C00L Memory";
+	const char *name2 = "Vincent's other memory for the max";
 	int shm_fd;
 	sem_t *sem;
+	double *minmem;
+
+	double max;
+
 	// Create shared memory for semaphore
 	shm_fd = shm_open(name, O_CREAT | O_RDWR, 0666);
 	ftruncate(shm_fd,SIZE);
@@ -44,6 +47,17 @@ int main (){
 		exit(0);
 	}
 
+	// Create shared memory for max
+	shm_fd = shm_open(name2, O_CREAT | O_RDWR, 0656);
+	ftruncate(shm_fd,SIZE);
+	minmem = mmap(0,SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+	if (minmem == MAP_FAILED) {
+		printf("Map failed\n");
+		exit(0);
+	}
+
+	&minmem = 9999;
+
 	pid_t pid;
 	pid = fork();
 	if (pid == 0) {
@@ -54,13 +68,12 @@ int main (){
 			for (x2 = -2; x2 <= 2; x2++){
 				y = shubert(x1/2.0, x2);
 				sem_wait(sem);
-				if(y < min){
-					min = y;
-					printf("Child found new min: %f\n", min);
+				if(y < &minmem){
+					&minmem = y;
+					printf("Child found new min: %f\n", &minmem);
 					fflush(stdout);
 				}
 				sem_post(sem);
-				printf("     -----> %f\n", min);
 			}
 		}
 	}
@@ -73,25 +86,29 @@ int main (){
 			for (x2 = -2; x2 <= 2; x2++){
 				y = shubert(x1/2.0, x2);
 				sem_wait(sem);
-				if(y < min){
+				if(y < &minmem){
 					min = y;
-					printf("Parent found new min: %f\n", min);
+					printf("Parent found new min: %f\n", &minmem);
 					fflush(stdout);
 				}
 				sem_post(sem);
-				printf("     -----> %f\n", min);
 			}
 		}
 
 		wait(NULL); // Need to wait because someone needs to clean up
 		
 
-		printf("\nMinimum = %f\n", min);
+		printf("\nMinimum = %f\n", &minmem);
 
 		sem_destroy(sem); // Clean up semaphore
 
 
 		if (shm_unlink(name) == -1) { // Clean up shared memory
+			printf("Error removing %s\n",name);
+			exit(0);
+		}
+
+		if (shm_unlink(name2) == -1) { // Clean up shared memory
 			printf("Error removing %s\n",name);
 			exit(0);
 		}
