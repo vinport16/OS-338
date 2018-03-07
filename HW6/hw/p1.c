@@ -33,4 +33,6 @@ int main (){
 		}
 	}
 
+	printf("\nMinimum = %f\n", min);
+
 }
