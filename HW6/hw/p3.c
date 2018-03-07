@@ -78,14 +78,17 @@ int main (){
 		}
 
 		wait(NULL); // Need to wait because someone needs to clean up
+		
+		
+		printf("\nMinimum = %f\n", min);
+
 		sem_destroy(sem); // Clean up semaphore
+
 
 		if (shm_unlink(name) == -1) { // Clean up shared memory
 			printf("Error removing %s\n",name);
 			exit(0);
 		}
-
-		printf("\nMinimum = %f\n", min);
 
 	}
 
