@@ -1,10 +1,10 @@
 #include <string.h>
 #include <pthread.h>
 #include <stdio.h>
-#include <unistd.h>     
-#include <sys/types.h>  
-#include <stdlib.h>     
-#include <semaphore.h>  
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <semaphore.h>
 
 #define N 10
 #define BUFFER_SIZE 5

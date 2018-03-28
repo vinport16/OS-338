@@ -1,10 +1,10 @@
 #include <pthread.h>
 #include <stdio.h>
-#include <unistd.h> 
-#include <sys/sem.h>    
-#include <sys/types.h>  
-#include <stdlib.h>     
-#include <semaphore.h>  
+#include <unistd.h>
+#include <sys/sem.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <semaphore.h>
 #include <string.h>
 
 #define BUFFER_SIZE 20
