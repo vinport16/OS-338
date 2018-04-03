@@ -87,12 +87,9 @@ void *producer() {
 		
 		enter_monitor();
 
-		printf("count: %d\nN: %d\n\n", count, N);
-		if(count == N){
-			printf("count = N\n");
+		if(count == BUFFER_SIZE){
 			cwait(&not_full);
 		}
-		printf("wrote %d \n", data[i]);
 		buffer[input] = data[i];
 		count++;
 		cpost(&not_empty);
