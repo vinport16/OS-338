@@ -69,6 +69,7 @@ int main(int argc, char *argv[]) {
 
 	// Join and print result
 	pthread_join(tid, NULL);
+	pthread_join(tid2, NULL);
 	sem_destroy(&mutex);
 	sem_destroy(&next);
 	sem_destroy(&(not_full.sem));
