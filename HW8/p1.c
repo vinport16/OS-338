@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 		exit(0);
 	}
 
-	if(sem_init(&(not_empty.sem), 0, 0) < 0 || sem_init(&(not_full.sem), 0, 1) < 0) { // 0 = multithreaded
+	if(sem_init(&(not_empty.sem), 0, 0) < 0 || sem_init(&(not_full.sem), 0, 0) < 0) { // 0 = multithreaded
 		fprintf(stderr, "ERROR: 2 could not initialize &semaphore.\n");
 		exit(0);
 	}
