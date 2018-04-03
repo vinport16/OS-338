@@ -87,6 +87,7 @@ void *producer() {
 		
 		enter_monitor();
 
+		printf("count: %d\nN: %d\n\n", count, N);
 		if(count == N){
 			printf("count = N\n");
 			cwait(&not_full);
