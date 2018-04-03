@@ -38,7 +38,10 @@ void exit_monitor(){
 
 int main(int argc, char *argv[]) {
 
-//initializng the semaphore
+	//initializng the semaphore
+	not_full.count = 0;
+	not_empty.count = 0;
+
 	if(sem_init(&mutex, 0, 1) < 0) { // 0 = multithreaded
 		fprintf(stderr, "ERROR: 0 could not initialize &semaphore.\n");
 		exit(0);
