@@ -1,0 +1,36 @@
+Vincent Portelli VLP25
+
+1) Output:
+new min: 10.729972; found by: 1
+new min: -7.760787; found by: 1
+new min: -73.981932; found by: 0
+new min: -97.274323; found by: 0
+
+Minimum = -97.274323
+
+
+
+2) Output:
+Parent found new min: 10.729972
+Parent found new min: -7.760787
+Parent found new min: -10.992414
+Parent found new min: -14.453254
+Child found new min: -27.480095
+Child found new min: -73.981932
+Child found new min: -97.274323
+
+Final min: -97.274323
+
+
+
+3) Output:
+Parent found new min: 10.729972
+Parent found new min: -7.760787
+Parent found new min: -10.992414
+Parent found new min: -14.453254
+Child found new min: -27.480095
+Child found new min: -73.981932
+Child found new min: -97.274323
+
+Minimum = -97.274323
+
