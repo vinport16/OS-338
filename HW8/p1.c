@@ -41,20 +41,19 @@ int main(int argc, char *argv[]) {
 //initializng the semaphore
 	if(sem_init(&mutex, 0, 1) < 0) { // 0 = multithreaded
 		fprintf(stderr, "ERROR: 0 could not initialize &semaphore.\n");
-		//exit(0);
+		exit(0);
 	}
 
 	if(sem_init(&next, 0, 0) < 0) { // 0 = multithreaded
 		fprintf(stderr, "ERROR: 1 could not initialize &semaphore.\n");
-		//exit(0);
+		exit(0);
 	}
 
 	if(sem_init(&(not_empty.sem), 0, 0) < 0 || sem_init(&(not_full.sem), 0, 1) < 0) { // 0 = multithreaded
 		fprintf(stderr, "ERROR: 2 could not initialize &semaphore.\n");
-		//exit(0);
+		exit(0);
 	}
 
-	exit(0);
 	pthread_t tid; /* the thread identifiers */
 	pthread_attr_t attr; /* set of attributes for the thread */
 	pthread_attr_init(&attr);
