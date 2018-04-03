@@ -106,7 +106,7 @@ void *consumer(){
 		
 		enter_monitor();
 
-		if(count == N){
+		if(count == 0){
 			cwait(&not_empty);
 		}
 		value = buffer[input];
