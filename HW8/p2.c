@@ -139,28 +139,30 @@ void *consumer(){
 
 	int i, input = 0;
 	char data[20];
+	i = 1;
 
-	for (i = 1; i < 5; i++){
+	while (version < 5){
 		
 		enter_monitor();
 
+		sem_wait(&readers);
+		readcount++;
+		sem_post(&readers);
+		
 		if(version == i){
-			sem_wait(&readers);
-			readcount++;
-			sem_post(&readers);
+			sprintf(data, "%s", buffer);
+			printf("%s\n", data);
 		}
 
-		sprintf(data, "%s", buffer);
-
+		sem_wait(&readers);
 		readcount--;
+		sem_post(&readers);
 
 		if(readcount == 0){
 			cpost(&not_reading);
 		}
 
 		exit_monitor();
-
-		printf("%s\n", data);
 
 	}
 
