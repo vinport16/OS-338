@@ -94,6 +94,7 @@ void *producer() {
 	cwait(&not_reading);
 
 	sprintf(buffer, "%s", "cha-cha");
+	printf("hahah ok");
 	version++;
 
 	exit_monitor();
