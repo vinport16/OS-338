@@ -141,7 +141,7 @@ void *consumer(){
 	char data[20];
 	i = 1;
 
-	while (version < 5){
+	while (i < 5){
 		
 		enter_monitor();
 
@@ -152,6 +152,7 @@ void *consumer(){
 		if(version == i){
 			sprintf(data, "%s", buffer);
 			printf("%s\n", data);
+			i++;
 		}
 
 		sem_wait(&readers);
