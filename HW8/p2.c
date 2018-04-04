@@ -91,14 +91,12 @@ int main(int argc, char *argv[]) {
 void *producer() {
 
 	enter_monitor();
-	printf("writer entered monitor\n");
 
 	if(readcount != 0){
 		cwait(&not_reading);
 	}
 
 	sprintf(buffer, "%s", "cha-cha");
-	printf("hahah ok\n");
 	version++;
 
 	exit_monitor();
@@ -158,12 +156,9 @@ void *consumer(){
 		
 		enter_monitor();
 
-		printf("reader in monitor\n");
 		sem_wait(&readers);
 		readcount++;
 		sem_post(&readers);
-		printf("%d readers reading\n",readcount);
-		printf("version: %d\n",i);
 		if(version == i){
 			sprintf(data, "%s", buffer);
 			printf("%s\n", data);
@@ -180,7 +175,6 @@ void *consumer(){
 
 		exit_monitor();
 
-		sleep(1);
 	}
 
 }
