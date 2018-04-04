@@ -91,10 +91,12 @@ int main(int argc, char *argv[]) {
 void *producer() {
 
 	enter_monitor();
+	printf("writer entered monitor\n");
 	cwait(&not_reading);
+	printf("not reading happened\n");
 
 	sprintf(buffer, "%s", "cha-cha");
-	printf("hahah ok");
+	printf("hahah ok\n");
 	version++;
 
 	exit_monitor();
@@ -165,7 +167,8 @@ void *consumer(){
 		}
 
 		exit_monitor();
-
+		
+		sleep(1);
 	}
 
 }
