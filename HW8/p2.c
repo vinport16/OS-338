@@ -148,10 +148,12 @@ void *consumer(){
 		
 		enter_monitor();
 
+		printf("reader in monitor\n");
 		sem_wait(&readers);
 		readcount++;
 		sem_post(&readers);
-		
+		printf("%d readers reading\n",readcount);
+		printf("version: %d\n",i);
 		if(version == i){
 			sprintf(data, "%s", buffer);
 			printf("%s\n", data);
@@ -167,7 +169,7 @@ void *consumer(){
 		}
 
 		exit_monitor();
-		
+
 		sleep(1);
 	}
 
