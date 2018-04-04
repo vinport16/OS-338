@@ -72,6 +72,11 @@ int main(int argc, char *argv[]) {
 	pthread_attr_init(&attr2);
 	pthread_create(&tid2, &attr2, consumer, NULL);
 
+	pthread_t tid3; /* the thread identifiers */
+	pthread_attr_t attr3; /* set of attributes for the thread */
+	pthread_attr_init(&attr3);
+	pthread_create(&tid3, &attr3, consumer, NULL);
+
 	
 
 	// Join and print result
@@ -79,8 +84,8 @@ int main(int argc, char *argv[]) {
 	pthread_join(tid2, NULL);
 	sem_destroy(&mutex);
 	sem_destroy(&next);
-	sem_destroy(&(not_full.sem));
-	sem_destroy(&(not_empty.sem));
+	sem_destroy(&(not_reading.sem));
+	sem_destroy(&readers);
 }
 
 void *producer() {
@@ -150,7 +155,7 @@ void *consumer(){
 		readcount--;
 
 		if(readcount == 0){
-			cpost(not_reading);
+			cpost(&not_reading);
 		}
 
 		exit_monitor();
