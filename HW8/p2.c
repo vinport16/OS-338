@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 		exit(0);
 	}
 
-	if(sem_init(&readers, 0, 0) < 0) { // 0 = multithreaded
+	if(sem_init(&readers, 0, 1) < 0) { // 0 = multithreaded
 		fprintf(stderr, "ERROR: could not initialize &semaphore readers.\n");
 		exit(0);
 	}
@@ -92,8 +92,10 @@ void *producer() {
 
 	enter_monitor();
 	printf("writer entered monitor\n");
-	cwait(&not_reading);
-	printf("not reading happened\n");
+
+	if(readcount != 0){
+		cwait(&not_reading);
+	}
 
 	sprintf(buffer, "%s", "cha-cha");
 	printf("hahah ok\n");
@@ -105,8 +107,10 @@ void *producer() {
 
 
 	enter_monitor();
-	cwait(&not_reading);
 
+	if(readcount != 0){
+		cwait(&not_reading);
+	}
 	sprintf(buffer, "%s", "super user do");
 	version++;
 
@@ -116,7 +120,10 @@ void *producer() {
 
 
 	enter_monitor();
-	cwait(&not_reading);
+	
+	if(readcount != 0){
+		cwait(&not_reading);
+	}
 
 	sprintf(buffer, "%s", "ok ok ok ok : )");
 	version++;
@@ -127,7 +134,10 @@ void *producer() {
 
 
 	enter_monitor();
-	cwait(&not_reading);
+	
+	if(readcount != 0){
+		cwait(&not_reading);
+	}
 
 	sprintf(buffer, "%s", "foo bar");
 	version++;
