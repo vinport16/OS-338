@@ -23,7 +23,7 @@ int main (){
 		}
 		printf("%.2f\n", y);
 	}
-	printf("min = %.2f ", min);
+	printf("min = %.2f\n ", min);
 }
 
 double shubert(double step, double x2) {

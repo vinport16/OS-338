@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 		for (i = 0; i < threadnum; i++){
 			wait(NULL);
 		}
-		printf("min = %.2f ", global_min[0]);
+		printf("min = %.2f\n", global_min[0]);
 		// Unlink shared memory
 		if (shm_unlink(name) == -1) {
 			printf("Error removing %s\n",name);

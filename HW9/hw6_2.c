@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		pthread_join(tids[i], NULL);
 	}
 	
-	printf("min = %.2f ", global_min);
+	printf("min = %.2f\n", global_min);
 }
 
 void *child(void* arg) {
