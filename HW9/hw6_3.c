@@ -47,7 +47,8 @@ int main(int argc, char *argv[])
 	int threadnum = atoi(argv[1]);
 	global_min[0] = 0;
 	pid_t pid;
-	for (int i = 0; i < threadnum; i++){
+	int i;
+	for (i = 0; i < threadnum; i++){
 		pid = fork();
 		if (pid) {//parent
 			// uhhh don't do anything, just keep looping
@@ -74,7 +75,7 @@ int main(int argc, char *argv[])
 	}
 
 	if (pid) { // If parent: wait for children to finish
-		for (int i = 0; i < threadnum; i++){
+		for (i = 0; i < threadnum; i++){
 			wait(NULL);
 		}
 		printf("min = %.2f ", global_min[0]);
