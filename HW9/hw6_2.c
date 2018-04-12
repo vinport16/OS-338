@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
 
 	// Prepare the child thread
-	pthread *tids;
+	pthread_t *tids;
 	tids = malloc(sizeof(pthread_t)*threadnum);
 
 	for(i = 0; i < threadnum; i++){
