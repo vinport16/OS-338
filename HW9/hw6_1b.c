@@ -21,7 +21,7 @@ int main (){
 			if (y < min)
 				min = y;
 		}
-		printf("\n", y);
+		printf("%.2f\n", y);
 	}
 	printf("min = %.2f ", min);
 }
