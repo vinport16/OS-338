@@ -18,7 +18,7 @@ int threadnum;
 
 int main(int argc, char *argv[])
 {
-	threadum = atoi(argv[1]);
+	threadnum = atoi(argv[1]);
 	// Prepare semaphore
 	if(sem_init(&sem, 0, 1) < 0) { // 0 = multithreaded
 		fprintf(stderr, "ERROR: could not initialize &semaphore.\n");
@@ -30,12 +30,12 @@ int main(int argc, char *argv[])
 	pthread *tids;
 	tids = malloc(sizeof(pthread_t)*threadnum);
 
-	for(i = 0; i < threadnum; i++){
+	for(int i = 0; i < threadnum; i++){
 		pthread_create(&tids[i], NULL, child, -2.0 + i * 4.0 / threadnum);
 		printf("created thread %d\n", threadnum);
 	}
 	
-	for(i = 0; i < threadnum; i++){
+	for(int i = 0; i < threadnum; i++){
 		pthread_join(tids[i], NULL);
 	}
 	
