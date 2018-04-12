@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	tids = malloc(sizeof(pthread_t)*threadnum);
 	int i;
 	for(i = 0; i < threadnum; i++){
-		int q = (-2.0 + i * 4.0 / threadnum)
+		int q = (-2.0 + i * 4.0 / threadnum);
 		pthread_create(&tids[i], NULL, child, &q);
 		printf("created thread %d\n", threadnum);
 	}
