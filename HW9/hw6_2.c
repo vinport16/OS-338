@@ -30,12 +30,12 @@ int main(int argc, char *argv[])
 	pthread *tids;
 	tids = malloc(sizeof(pthread_t)*threadnum);
 
-	for(int i = 0; i < threadnum; i++){
+	for(i = 0; i < threadnum; i++){
 		pthread_create(&tids[i], NULL, child, -2.0 + i * 4.0 / threadnum);
 		printf("created thread %d\n", threadnum);
 	}
 	
-	for(int i = 0; i < threadnum; i++){
+	for(i = 0; i < threadnum; i++){
 		pthread_join(tids[i], NULL);
 	}
 	
